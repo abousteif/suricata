@@ -1,0 +1,9 @@
+# sid range 1000000 - 1999999
+# tar czvf hunting.rules.tar.gz hunting.rules && md5sum hunting.rules.tar.gz > hunting.rules.tar.gz.md5
+
+## vulntesting domains
+#alert dns $HOME_NET any -> any any (msg:"TGI HUNT VulnTesting Domain (scannermcscanface-edgescan.com in DNS Lookup)"; dns_query; content:"scannermcscanface-edgescan.com"; isdataat:!1,relative; reference:url,gist.github.com/travisbgreen/3f7ddcd5841d802e536d5854e2218e8c; classtype:trojan-activity; sid:2610178; rev:1;)
+
+## Zees test rule
+alert http any any -> any any (msg:"Its getting crazy here Stop BROWSING unsecured"; http.uri; content:"httpforever.com"; reference:url,github.com/abousteif/suricata; sid:1000000; rev:1;)
+alert dns $HOME_NET any -> any any (msg:"Its getting crazy here Stop RESOLVING unsecured DNS"; dns_query; content:"httpforever.com"; reference:url,https://github.com/abousteif/suricata; sid:1000001; rev:1;)
